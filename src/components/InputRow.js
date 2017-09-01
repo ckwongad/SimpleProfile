@@ -22,5 +22,6 @@ export default class InputRow extends Component {
 
 InputRow.propTypes = {
   placeholder: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired
+  value: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func.isRequired
 };
