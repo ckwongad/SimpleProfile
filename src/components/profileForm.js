@@ -7,18 +7,15 @@ import * as profileActions from '../actions/profileActions';
 
 class ProfileForm extends Component {
   onChange = (value, fieldKey) => {
-    const { actions } = this.props;
-		actions.changeValue(fieldKey, value);
+    this.props.changeValue(fieldKey, value);
 	}
 
   onPress = () => {
-    const { actions } = this.props;
-    //alert(this.props)
-		actions.save();
+    this.props.save();
 	}
 
   componentDidMount = () => {
-    this.props.actions.fetchProfile();
+    this.props.fetchProfile();
   }
 
 
@@ -71,14 +68,24 @@ class ProfileForm extends Component {
   }
 }
 
+ProfileForm.propTypes = {
+  changeValue: React.PropTypes.func.isRequired,
+  save: React.PropTypes.func.isRequired,
+  fetchProfile: React.PropTypes.func.isRequired,
+  firstName: React.PropTypes.string,
+  lastName: React.PropTypes.string,
+  company: React.PropTypes.string,
+  department: React.PropTypes.string,
+  position: React.PropTypes.string,
+  email: React.PropTypes.string
+}
+
 function mapStateToProps(state) {
 	return state.profile
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(profileActions, dispatch)
-	};
+	return bindActionCreators(profileActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);
