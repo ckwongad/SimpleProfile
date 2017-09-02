@@ -1,9 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {
-  firstName: "",
-  lastName: "",
-}
+const initialState = {}
 
 const profileReducer = (state = initialState, action) => {
   switch(action.type) {

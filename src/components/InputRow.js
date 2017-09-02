@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 
 export default class InputRow extends Component {
+  static defaultProps = {
+      value: '',
+  }
+
   render() {
     const { placeholder, value, onChange } = this.props
 
